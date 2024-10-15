@@ -8,8 +8,12 @@ import { useMemo } from 'react';
 import { transactions } from '../../../../mock/transactions.ts';
 
 function groupByDate(transactions: WalletTransaction[]) {
-  return transactions.reduce<Record<string, WalletTransaction[]>>(
-    (obj, curr) => {
+  return transactions
+    .sort(
+      (a, b) =>
+        transformDate(a.date).getTime() - transformDate(b.date).getTime(),
+    )
+    .reduce<Record<string, WalletTransaction[]>>((obj, curr) => {
       if (obj[curr.date]) {
         obj[curr.date].push(curr);
       } else {
@@ -17,9 +21,7 @@ function groupByDate(transactions: WalletTransaction[]) {
       }
 
       return obj;
-    },
-    {},
-  );
+    }, {});
 }
 
 function parseData(transactions: WalletTransaction[]) {
