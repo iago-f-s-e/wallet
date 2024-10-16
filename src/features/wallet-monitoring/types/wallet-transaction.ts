@@ -6,7 +6,7 @@ export type WalletTransaction = {
   description: string;
 };
 
-export type MonitorinWalletTransactions = {
+export type MonitoringWalletTransactions = {
   date: Date;
   amount: number;
   revenue: number;

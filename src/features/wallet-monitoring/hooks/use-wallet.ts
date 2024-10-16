@@ -1,7 +1,7 @@
 import { transformDate } from '@/core/lib/date.ts';
 
 import {
-  MonitorinWalletTransactions,
+  MonitoringWalletTransactions,
   WalletTransaction,
 } from '@/features/wallet-monitoring/types/wallet-transaction.ts';
 import { useMemo } from 'react';
@@ -26,7 +26,7 @@ function groupByDate(transactions: WalletTransaction[]) {
 
 function parseData(transactions: WalletTransaction[]) {
   const group = groupByDate(transactions);
-  const data: MonitorinWalletTransactions[] = [];
+  const data: MonitoringWalletTransactions[] = [];
 
   let amount = 0;
   for (const date of Object.keys(group)) {
