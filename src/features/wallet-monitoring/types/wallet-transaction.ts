@@ -11,4 +11,5 @@ export type MonitoringWalletTransactions = {
   amount: number;
   revenue: number;
   spending: number;
+  diff: number;
 };

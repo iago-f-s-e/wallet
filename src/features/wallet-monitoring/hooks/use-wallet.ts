@@ -6,6 +6,7 @@ import {
 } from '@/features/wallet-monitoring/types/wallet-transaction.ts';
 import { useMemo } from 'react';
 import { transactions } from '../../../../mock/transactions.ts';
+import { inWallet } from '../../../../mock/wallter.ts';
 
 function groupByDate(transactions: WalletTransaction[]) {
   return transactions
@@ -28,7 +29,7 @@ function parseData(transactions: WalletTransaction[]) {
   const group = groupByDate(transactions);
   const data: MonitoringWalletTransactions[] = [];
 
-  let amount = 0;
+  let amount = inWallet;
   for (const date of Object.keys(group)) {
     const transactions = group[date];
 
@@ -44,7 +45,9 @@ function parseData(transactions: WalletTransaction[]) {
       }
     }
 
-    data.push({ amount, date: transformDate(date), spending, revenue });
+    const diff = revenue - spending;
+
+    data.push({ amount, date: transformDate(date), spending, revenue, diff });
   }
 
   return data;

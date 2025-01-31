@@ -44,8 +44,8 @@ export function WalletChartContainer() {
           stroke="green"
           strokeWidth={2}
         />
-
         <Line type="monotone" dataKey="amount" stroke="blue" strokeWidth={2} />
+        <Line type="monotone" dataKey="diff" stroke="grey" strokeWidth={2} />
       </LineChart>
     </ResponsiveContainer>
   );
